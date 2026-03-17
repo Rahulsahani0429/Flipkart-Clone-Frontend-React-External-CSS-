@@ -1,0 +1,87 @@
+/* 
+  .action-dropdown-container wrapper is no longer used (button rendered directly),
+  but kept here in case other tables still reference it.
+*/
+.action-dropdown-container {
+  position: relative;
+  display: inline-block;
+}
+
+/* ── Trigger button ─────────────────────────────────────── */
+.dot-menu-btn {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: #9a9fa5;
+  cursor: pointer;
+  padding: 0.4rem 0.6rem;
+  border-radius: 0.5rem;
+  transition: background 0.15s, color 0.15s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.dot-menu-btn:hover {
+  background: #f4f7f9;
+  color: #1a1d1f;
+}
+
+/* ── Portal dropdown (position:fixed via JS) ────────────── */
+.portal-dropdown {
+  background: #ffffff;
+  border-radius: 0.75rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.14), 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 4px;
+  border: 1px solid #efefef;
+  animation: dropdownFadeIn 0.18s ease-out;
+  /* position & z-index set inline by JS */
+}
+
+@keyframes dropdownFadeIn {
+  from { opacity: 0; transform: translateY(-6px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0)   scale(1);    }
+}
+
+/* ── Dropdown items ─────────────────────────────────────── */
+.dropdown-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.6rem 0.9rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: #1a1d1f;
+  border-radius: 0.5rem;
+  transition: background 0.15s;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.dropdown-item:hover:not(.disabled) {
+  background: #f4f7f9;
+}
+
+.dropdown-item.disabled {
+  opacity: 0.38;
+  cursor: not-allowed;
+}
+
+.dropdown-icon {
+  font-size: 1rem;
+  filter: grayscale(0.6);
+  flex-shrink: 0;
+}
+
+.dropdown-item:hover:not(.disabled) .dropdown-icon {
+  filter: grayscale(0);
+}
+
+.dropdown-label {
+  flex: 1;
+}

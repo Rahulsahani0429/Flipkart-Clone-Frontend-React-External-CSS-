@@ -1,0 +1,121 @@
+.cb-container {
+    position: relative;
+    width: 100%;
+    height: 380px; /* Adjust based on desired height */
+    overflow: hidden;
+    border-radius: 8px;
+    background: #f1f3f6;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+}
+
+.cb-track {
+    display: flex;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+}
+
+.cb-slide {
+    min-width: 100%;
+    height: 100%;
+    flex-shrink: 0;
+}
+
+.cb-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Navigation Arrows */
+.cb-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.9);
+    color: #212121;
+    border: none;
+    width: 40px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.2s;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+}
+
+.cb-arrow.prev {
+    left: 0;
+    border-radius: 0 4px 4px 0;
+}
+
+.cb-arrow.next {
+    right: 0;
+    border-radius: 4px 0 0 4px;
+}
+
+.cb-arrow:hover {
+    background: #fff;
+    color: #2874f0;
+    width: 45px;
+}
+
+.cb-arrow:active {
+    background: #f1f3f6;
+}
+
+/* Dots */
+.cb-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+}
+
+.cb-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s;
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
+.cb-dot.active {
+    background: #fff;
+    width: 24px;
+    border-radius: 4px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .cb-container {
+        height: 280px;
+    }
+}
+
+@media (max-width: 768px) {
+    .cb-container {
+        height: 180px;
+    }
+    .cb-arrow {
+        width: 32px;
+        height: 60px;
+        display: none; /* Hide arrows on mobile for cleaner look, use swipe or dots */
+    }
+    .cb-dot {
+        width: 6px;
+        height: 6px;
+    }
+    .cb-dot.active {
+        width: 16px;
+    }
+}

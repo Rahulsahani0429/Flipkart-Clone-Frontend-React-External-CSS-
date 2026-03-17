@@ -1,0 +1,596 @@
+.order-details-wrapper {
+    background-color: #f6f8fb;
+    min-height: 100vh;
+    padding: 3rem 0;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+.order-details-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.details-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.back-link {
+    background: none;
+    border: none;
+    color: #4a90e2;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    transition: color 0.2s;
+}
+
+.back-link:hover {
+    color: #2a70c2;
+}
+
+.details-header h1 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #1a1a1a;
+}
+
+.details-main-content {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 2rem;
+}
+
+.details-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem;
+    overflow: hidden;
+    border: 1px solid #edf2f7;
+}
+
+.card-header {
+    padding: 1.2rem 1.7rem;
+    border-bottom: 1px solid #f1f4f8;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-header h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1a1a1a;
+}
+
+.delivery-status {
+    color: #1a1a1a;
+    font-weight: 700;
+}
+
+.order-id-capsule {
+    background: #f1f4f8;
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+}
+
+.id-label {
+    color: #999;
+    margin-right: 4px;
+}
+
+.id-value {
+    color: #666;
+    font-weight: 600;
+    font-family: monospace;
+}
+
+/* Tracker Inner */
+.tracker-inner-padding {
+    padding: 1.5rem 0.5rem;
+}
+
+.cancel-order-action {
+    padding: 1rem 1.7rem;
+    border-top: 1px solid #f1f4f8;
+    text-align: right;
+}
+
+.details-cancel-btn {
+    background: white;
+    border: 1px solid #ff523b;
+    color: #ff523b;
+    padding: 8px 20px;
+    border-radius: 6px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.details-cancel-btn:hover {
+    background: #fff5f5;
+}
+
+.details-cancel-btn.orange {
+    border-color: #f97316;
+    color: #f97316;
+}
+
+.details-cancel-btn.orange:hover {
+    background: #fff7ed;
+}
+
+.cancel-limit-info {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    margin-top: 8px;
+    font-style: italic;
+    text-align: right;
+}
+
+.cancellation-pending-badge {
+    padding: 10px 1.5rem;
+    margin: 10px 1.7rem;
+    background: #fff7ed;
+    border: 1px solid #fed7aa;
+    color: #c2410c;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.cancelled-text {
+    color: #e53e3e;
+}
+
+/* Shipment Items */
+.shipment-items {
+    padding: 0.5rem 0;
+}
+
+.shipment-item {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.5rem 1.7rem;
+    border-bottom: 1px solid #f7f9fc;
+}
+
+.shipment-item:last-child {
+    border-bottom: none;
+}
+
+.item-img-box {
+    width: 90px;
+    height: 90px;
+    background: #fdfdfd;
+    border: 1px solid #f1f4f8;
+    border-radius: 8px;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.item-img-box img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.item-info {
+    flex: 1;
+}
+
+.item-name {
+    font-size: 1rem;
+    font-weight: 800;
+    color: #1a1a1a;
+    margin-bottom: 0.5rem;
+}
+
+.item-meta p {
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 0.3rem;
+}
+
+.meta-label {
+    font-weight: 700;
+    color: #1a1a1a;
+}
+
+.item-price-val {
+    margin-top: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 900;
+    color: #1a1a1a;
+}
+
+.item-count {
+    font-size: 0.85rem;
+    color: #888;
+    font-weight: 600;
+}
+
+/* Address Card */
+.address-content {
+    padding: 1.5rem 1.7rem;
+}
+
+.shipping-user-name {
+    font-weight: 800;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: #1a1a1a;
+}
+
+.address-line {
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+/* Price Details Card */
+.price-body {
+    padding: 1.5rem 1.7rem 1rem;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.2rem;
+    font-size: 0.95rem;
+    color: #666;
+}
+
+.detail-row span:last-child {
+    font-weight: 700;
+    color: #1a1a1a;
+}
+
+.free-shipping {
+    color: #00bfa5 !important;
+}
+
+.detail-row.discount span:last-child {
+    color: #e53e3e;
+}
+
+.divider {
+    height: 1px;
+    background: #f1f4f8;
+    margin: 1.5rem 0;
+}
+
+.total-highlight-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.total-highlight-row span:first-child {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #1a1a1a;
+}
+
+.total-highlight-row span:last-child {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #1a1a1a;
+}
+
+.price-footer {
+    padding: 1rem 1.7rem;
+}
+
+.invoice-download-btn {
+    width: 100%;
+    background: #4a90e2;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Payment Body */
+.payment-body {
+    padding: 1.5rem 1.7rem;
+}
+
+.pay-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 1rem;
+}
+
+.pay-label {
+    min-width: 65px;
+    font-size: 0.9rem;
+    color: #888;
+    font-weight: 600;
+}
+
+.pay-val {
+    font-weight: 700;
+    color: #1a1a1a;
+    font-size: 0.95rem;
+}
+
+.status-pill {
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 800;
+}
+
+.status-pill.is-success {
+    background: #e6fffa;
+    color: #00bfa5;
+}
+
+.status-pill.is-pending {
+    background: #fffbeb;
+    color: #d97706;
+}
+
+.status-pill.is-failed {
+    background: #fff5f5;
+    color: #e53e3e;
+}
+
+.status-pill.is-refunded {
+    background: #eff6ff;
+    color: #2563eb;
+}
+
+.payment-notes-box {
+    margin-top: 1.2rem;
+    padding: 1rem;
+    background: #f8fafc;
+    border-radius: 8px;
+    border-left: 4px solid #4a90e2;
+}
+
+.notes-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #4a90e2;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+}
+
+.notes-text {
+    font-size: 0.9rem;
+    color: #475569;
+    line-height: 1.5;
+    font-style: italic;
+}
+
+.receipt-sent-info {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px dashed #e2e8f0;
+}
+
+.receipt-badge-sent {
+    background: #ecfdf5;
+    color: #059669;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 800;
+}
+
+.sent-timestamp {
+    margin-top: 4px;
+    font-size: 0.8rem;
+    color: #94a3b8;
+}
+
+/* Return / Cancellation Options Card */
+.options-card {
+    margin-top: 1.5rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.options-body {
+    padding: 1.5rem;
+}
+
+.option-action-block {
+    margin-bottom: 1.5rem;
+}
+
+.option-action-block:last-child {
+    margin-bottom: 0;
+}
+
+.option-btn {
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all 0.2s;
+    display: block;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.option-btn.orange {
+    background: #ff9f00;
+    color: white;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.option-btn.orange:hover {
+    background: #ff8f00;
+}
+
+.option-btn.blue {
+    background: #2874f0;
+    color: white;
+}
+
+.option-btn.blue:hover {
+    background: #1259cc;
+}
+
+.option-btn.red {
+    background: white;
+    border: 1px solid #ff523b;
+    color: #ff523b;
+}
+
+.option-btn.red:hover {
+    background: #fff5f5;
+}
+
+.option-btn:disabled {
+    background: #f1f4f8;
+    color: #94a3b8;
+    cursor: not-allowed;
+    border: none;
+}
+
+.option-helper-text {
+    font-size: 0.8rem;
+    color: #878787;
+    margin: 4px 0 0;
+    text-align: center;
+}
+
+.option-note {
+    font-size: 0.85rem;
+    color: #666;
+    text-align: center;
+    padding: 12px;
+    background: #f9f9f9;
+    border-radius: 4px;
+    margin-top: 1rem;
+    line-height: 1.4;
+}
+
+.option-pending-info {
+    padding: 10px;
+    background: #fff7ed;
+    border: 1px solid #fed7aa;
+    color: #c2410c;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 4px;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.options-cancelled-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    background: #fff5f5;
+    color: #e53e3e;
+    font-weight: 800;
+    border-radius: 6px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.options-empty-msg {
+    text-align: center;
+    color: #878787;
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+.return-mini-status {
+    text-align: center;
+    padding: 10px;
+    background: #f8fafc;
+    border-radius: 6px;
+}
+
+.return-reason-text {
+    font-size: 0.8rem;
+    color: #64748b;
+    margin-top: 6px;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .details-main-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+.btn-spinner-sm {
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: btn-spin 0.6s linear infinite;
+    margin-right: 8px;
+}
+
+@keyframes btn-spin {
+    to { transform: rotate(360deg); }
+}
+
+.invoice-download-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.8;
+}
+
+.track-shipment-btn {
+    width: 100%;
+    margin-top: 12px;
+    padding: 12px;
+    background-color: #2874f0;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.track-shipment-btn:hover:not(:disabled) {
+    background-color: #1a5abb;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.track-shipment-btn:disabled {
+    background-color: #f1f3f6;
+    color: #878787;
+    cursor: not-allowed;
+    opacity: 0.7;
+    box-shadow: none;
+    border: 1px solid #dbdbdb;
+}

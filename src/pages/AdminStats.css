@@ -1,0 +1,449 @@
+/* AdminStats.css */
+*, *::before, *::after { box-sizing: border-box; }
+
+.stats-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    overflow-x: clip;
+    min-width: 0;
+    width: 100%;
+}
+
+.stats-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 1rem;
+    min-width: 0;          /* ✅ prevents flex children from overflowing */
+    width: 100%;
+}
+
+.header-left {
+    min-width: 0;          /* ✅ allows text to shrink and wrap */
+    flex: 1;
+}
+
+.header-left h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0;
+    word-break: break-word; /* long words wrap rather than overflow */
+}
+
+.header-left p {
+    font-size: 0.875rem;
+    color: #64748b;
+    margin: 0.25rem 0 0;
+}
+
+.stats-filters {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: #fff;
+    padding: 0.75rem 1.25rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+    border: 1px solid #f1f5f9;
+}
+
+.filter-group {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.filter-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #64748b;
+    text-transform: uppercase;
+}
+
+.select-filter {
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    font-size: 0.875rem;
+    outline: none;
+    color: #334155;
+    background: #f8fafc;
+}
+
+.date-input {
+    padding: 0.5rem 0.75rem;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    font-size: 0.875rem;
+    background: #f8fafc;
+}
+
+.btn-apply {
+    background: #4338ca;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-apply:hover {
+    background: #3730a3;
+}
+
+.export-dropdown {
+    position: relative;
+}
+
+.btn-export {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.25rem;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #475569;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-export:hover {
+    background: #f1f5f9;
+    color: #0f172a;
+}
+
+/* KPI Cards */
+.stats-kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.5rem;
+}
+
+.kpi-card {
+    background: #fff;
+    padding: 1.25rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    transition: transform 0.2s;
+}
+
+.kpi-card:hover {
+    transform: translateY(-4px);
+}
+
+.kpi-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+}
+
+.kpi-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.kpi-meta {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.25rem 0.5rem;
+    border-radius: 6px;
+    width: fit-content;
+}
+
+.meta-positive {
+    background: #f0fdf4;
+    color: #10b981;
+}
+
+.meta-negative {
+    background: #fef2f2;
+    color: #ef4444;
+}
+
+.meta-neutral {
+    background: #f8fafc;
+    color: #64748b;
+}
+
+/* Charts Layout */
+.stats-charts-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 1.5rem;
+}
+
+.chart-box {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    min-width: 0;
+    min-height: 0;
+}
+
+.chart-header {
+    margin-bottom: 1.5rem;
+}
+
+.chart-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0;
+}
+
+.h-400 {
+    height: 400px;
+    width: 100%;
+    min-width: 0;
+    min-height: 0;
+}
+
+.h-300 {
+    height: 300px;
+    width: 100%;
+    min-width: 0;
+    min-height: 0;
+}
+
+.bottom-charts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Tables Layout */
+.stats-tables-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 1.5rem;
+}
+
+.table-card {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    /* ⚠️ No overflow:hidden here — keeps shadow and allows inner scroll */
+}
+
+/* ✅ Only the inner wrapper scrolls — same pattern as Dashboard */
+.table-scroll-container,
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    /* gradient fade hint — shows user the table can scroll */
+    background:
+        linear-gradient(to right, #fff 0%, transparent 2%) left,
+        linear-gradient(to left,  #fff 0%, transparent 2%) right;
+    background-size: 16px 100%;
+    background-repeat: no-repeat;
+    background-attachment: local;
+}
+
+/* Shared custom table */
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 560px;      /* 5 columns: Date+Orders+Revenue+Success+Cancel */
+}
+
+.custom-table th {
+    text-align: left;
+    padding: 0.875rem 1rem;
+    background: #f8fafc;
+    color: #64748b;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid #f1f5f9;
+    white-space: nowrap;   /* Keep headers on one line */
+}
+
+.custom-table td {
+    padding: 0.875rem 1rem;
+    border-bottom: 1px solid #f8fafc;
+    font-size: 0.875rem;
+    color: #334155;
+    vertical-align: middle;
+}
+
+.custom-table tr:last-child td { border-bottom: none; }
+.custom-table tr:hover td { background: #f8fafc; }
+
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.table-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0;
+}
+
+/* Top Customers styling */
+.customer-list-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.customer-list-item:last-child {
+    border-bottom: none;
+}
+
+.customer-rank {
+    width: 28px;
+    height: 28px;
+    background: #f1f5f9;
+    color: #475569;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cust-info {
+    flex: 1;
+}
+
+.cust-name {
+    font-weight: 700;
+    color: #1e293b;
+    font-size: 0.875rem;
+    display: block;
+}
+
+.cust-email {
+    font-size: 0.75rem;
+    color: #64748b;
+}
+
+.cust-stats {
+    text-align: right;
+}
+
+.cust-spent {
+    font-weight: 700;
+    color: #0f172a;
+    display: block;
+}
+
+.cust-orders {
+    font-size: 0.75rem;
+    color: #64748b;
+}
+
+/* ═══ Responsive: Stats Page ═══ */
+
+@media (max-width: 1200px) {
+    .stats-charts-grid,
+    .stats-tables-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .stats-container {
+        gap: 1.25rem;
+    }
+
+    .stats-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .stats-kpi-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .kpi-card {
+        padding: 1rem;
+    }
+
+    .kpi-value {
+        font-size: 1.25rem;
+    }
+
+    .stats-filters {
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        padding: 0.75rem 1rem;
+    }
+
+    .filter-group {
+        flex-wrap: wrap;
+    }
+
+    .stats-charts-grid,
+    .stats-tables-grid,
+    .bottom-charts {
+        grid-template-columns: 1fr;
+    }
+
+    .chart-box {
+        padding: 1.25rem;
+    }
+
+    .h-400 { height: 280px; }
+    .h-300 { height: 240px; }
+
+    .table-card {
+        padding: 1.25rem;
+    }
+
+    .table-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .stats-kpi-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+
+    .stats-filters {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .select-filter,
+    .date-input,
+    .btn-apply {
+        width: 100%;
+    }
+
+    .h-400 { height: 240px; }
+    .h-300 { height: 200px; }
+}

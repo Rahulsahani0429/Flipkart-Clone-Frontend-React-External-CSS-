@@ -1,0 +1,170 @@
+.order-tracker-new {
+    padding: 40px 10px;
+    width: 100%;
+}
+
+.tracker-line-container {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.tracker-line-bg {
+    position: absolute;
+    top: 16px;
+    left: 20px;
+    right: 20px;
+    height: 4px;
+    background: #e0e0e0;
+    z-index: 1;
+    border-radius: 4px;
+}
+
+.tracker-line-progress {
+    position: absolute;
+    top: 16px;
+    left: 20px;
+    height: 4px;
+    background: #388e3c;
+    z-index: 2;
+    transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(56, 142, 60, 0.4);
+}
+
+.tracker-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 3;
+    width: 80px;
+}
+
+.node-circle {
+    width: 36px;
+    height: 36px;
+    background: white;
+    border: 3px solid #e0e0e0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s ease;
+    margin-bottom: 12px;
+    color: #e0e0e0;
+}
+
+.tracker-node.completed .node-circle {
+    background: #388e3c;
+    border-color: #388e3c;
+    color: white;
+}
+
+.tracker-node.active .node-circle {
+    border-color: #f028cb;
+    background: white;
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(40, 116, 240, 0.6);
+}
+
+.active-pulse {
+    width: 12px;
+    height: 12px;
+    background: #2874f0;
+    border-radius: 50%;
+    animation: trackerPulse 2s infinite;
+}
+
+@keyframes trackerPulse {
+    0% { transform: scale(0.8); box-shadow: 0 0 0 0 rgba(40, 116, 240, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(40, 116, 240, 0); }
+    100% { transform: scale(0.8); box-shadow: 0 0 0 0 rgba(40, 116, 240, 0); }
+}
+
+.node-info {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 48px;
+    width: 120px;
+}
+
+.node-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #878787;
+    margin-bottom: 2px;
+}
+
+.tracker-node.completed .node-label,
+.tracker-node.active .node-label {
+    color: #212121;
+}
+
+.node-time {
+    font-size: 0.7rem;
+    color: #999;
+    font-weight: 500;
+}
+
+.node-circle svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* Cancelled/Failed States */
+.is-cancelled .tracker-line-progress {
+    background: #ff4d4f;
+    box-shadow: 0 0 10px rgba(255, 77, 79, 0.4);
+}
+
+.is-cancelled .tracker-node.active .node-circle {
+    border-color: #ff4d4f;
+    box-shadow: 0 0 15px rgba(255, 77, 79, 0.6);
+}
+
+.is-cancelled .active-pulse {
+    background: #ff4d4f;
+}
+
+@media (max-width: 768px) {
+    .tracker-line-container {
+        flex-direction: column;
+        align-items: flex-start;
+        height: 400px;
+        padding-left: 20px;
+    }
+    
+    .tracker-line-bg {
+        left: 36px;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        height: 100%;
+    }
+    
+    .tracker-line-progress {
+        left: 36px;
+        top: 0;
+        width: 4px !important;
+        height: 50%; /* Just an example, ideally set via state */
+    }
+    
+    .tracker-node {
+        flex-direction: row;
+        width: 100%;
+        height: 60px;
+        gap: 20px;
+    }
+    
+    .node-info {
+        position: static;
+        text-align: left;
+        width: auto;
+    }
+}

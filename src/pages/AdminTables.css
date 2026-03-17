@@ -1,0 +1,258 @@
+/* Admin ProfitPulse Table Styles */
+
+.admin-page-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.admin-page-title-row h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* Master-Detail Three Pane Wrapper */
+.master-detail-wrapper {
+  display: flex;
+  gap: 2rem;
+  height: calc(100vh - 180px);
+}
+
+.master-pane {
+  flex: 1;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.detail-pane {
+  width: 380px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid var(--admin-border);
+}
+
+/* Custom Table */
+.profit-pulse-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.profit-pulse-table th {
+  padding: 1.25rem 1.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #6b7280;
+  background: #fff;
+  border-bottom: 1px solid var(--admin-border);
+  text-align: left;
+}
+
+.profit-pulse-table td {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #f8f9fa;
+  vertical-align: middle;
+  font-size: 0.9rem;
+}
+
+.profit-pulse-table tr:last-child td {
+  border-bottom: none;
+}
+
+.profit-pulse-table tr.selected {
+  background-color: #f8fafc;
+}
+
+.table-customer-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.table-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.customer-name-meta {
+  font-weight: 600;
+}
+
+/* Status Badges */
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.75rem;
+  border-radius: 100px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.status-paid { background: #fffbeb; color: #f59e0b; }
+.status-delivered { background: #ecfdf5; color: #10b981; }
+.status-completed { background: #dcfce7; color: #15803d; }
+.status-pending { background: #fee2e2; color: #dc2626; }
+.status-shipped { background: #eff6ff; color: #3b82f6; }
+
+/* Detail Pane Components */
+.detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.detail-order-number {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.detail-user-card {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.detail-user-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin: 0 auto 1rem;
+}
+
+.detail-user-name {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.order-items-list {
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: 1.5rem;
+}
+
+.order-item-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.order-item-img {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.order-item-info {
+  flex: 1;
+}
+
+.order-item-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: block;
+}
+
+.order-item-price {
+  font-size: 0.8rem;
+  color: var(--admin-text-muted);
+}
+
+.detail-footer-totals {
+  border-top: 1px solid var(--admin-border);
+  padding-top: 1rem;
+}
+
+.total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+.detail-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.btn-pulse {
+  flex: 1;
+  padding: 0.75rem;
+  border-radius: 10px;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.btn-pulse-dark { background: #111315; color: #fff; }
+.btn-pulse-light { background: #fff6e0; color: #b45309; }
+
+/* ═══ Responsive: Shared Table Styles ═══ */
+
+@media (max-width: 1200px) {
+  .master-detail-wrapper {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .detail-pane {
+    width: 100%;
+    border-left: none;
+    border-top: 1px solid var(--admin-border);
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-page-title-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .admin-page-title-row h1 {
+    font-size: 1.4rem;
+  }
+
+  /* Make tables scroll horizontally */
+  .master-pane {
+    overflow-x: auto;
+  }
+
+  .profit-pulse-table {
+    min-width: 520px;
+  }
+
+  .profit-pulse-table th,
+  .profit-pulse-table td {
+    padding: 0.875rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-page-title-row {
+    margin-bottom: 1rem;
+  }
+
+  .detail-actions {
+    flex-direction: column;
+  }
+}

@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
 import CheckoutSteps from '../components/CheckoutSteps';
+import { loadRazorpay } from '../utils/razorpay';
 import { API_BASE_URL, RAZORPAY_KEY_ID } from '../config';
 
 const PlaceOrder = () => {
@@ -39,6 +40,14 @@ const PlaceOrder = () => {
 
   const placeOrderHandler = async () => {
     try {
+      if (paymentMethod === 'Razorpay') {
+        const res = await loadRazorpay();
+        if (!res) {
+          alert('Razorpay SDK failed to load. Are you offline?');
+          return;
+        }
+      }
+
       const config = {
         headers: {
           'Content-Type': 'application/json',

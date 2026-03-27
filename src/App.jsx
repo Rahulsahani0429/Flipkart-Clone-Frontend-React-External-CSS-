@@ -2,8 +2,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import { AuthProvider } from './context/AuthContext'
 import { CartProvider } from './context/CartContext'
 import { SocketProvider } from './context/SocketContext'
-import { ToastContainer } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
+import { Toaster } from 'react-hot-toast'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
@@ -47,8 +46,7 @@ function App() {
       <CartProvider>
         <SocketProvider>
           <Router>
-            <ScrollToTop />
-            <ToastContainer position="top-right" autoClose={3000} />
+            <Toaster position="top-right" reverseOrder={false} />
             <AppContent />
           </Router>
         </SocketProvider>

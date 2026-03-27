@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { API_BASE_URL } from '../config';
@@ -9,29 +9,29 @@ import SeoContentSection from '../components/SeoContentSection';
 const shuffle = (arr) => [...arr].sort(() => Math.random() - 0.5);
 
 const CATEGORY_SECTIONS = [
-  { key: 'Electronics',      title: 'Electronics',           subtitle: 'Gadgets & Accessories',   emoji: '💻', color: '#1e3a5f' },
-  { key: 'Mobiles',          title: 'Mobiles',               subtitle: 'Smartphones & More',      emoji: '📱', color: '#1a237e' },
-  { key: 'Fashion',          title: 'Fashion',               subtitle: 'Style Picks',             emoji: '👗', color: '#4a148c' },
-  { key: 'Home & Furniture', title: 'Home & Furniture',      subtitle: 'For Your Home',           emoji: '🛋️', color: '#1b5e20' },
-  { key: 'Appliances',       title: 'Appliances',            subtitle: 'Kitchen & More',          emoji: '📺', color: '#e65100' },
-  { key: 'Sports',           title: 'Sports & Fitness',      subtitle: 'Stay Active',             emoji: '🏋️', color: '#006064' },
-  { key: 'Books',            title: 'Books',                 subtitle: 'Read & Learn',            emoji: '📚', color: '#37474f' },
-  { key: 'Beauty',           title: 'Beauty & Personal Care',subtitle: 'Look Great',             emoji: '💄', color: '#880e4f' },
-  { key: 'Grocery',          title: 'Grocery',               subtitle: 'Daily Essentials',        emoji: '🛒', color: '#2e7d32' },
+  { key: 'Electronics', title: 'Electronics', subtitle: 'Gadgets & Accessories', emoji: '💻', color: '#1e3a5f' },
+  { key: 'Mobiles', title: 'Mobiles', subtitle: 'Smartphones & More', emoji: '📱', color: '#1a237e' },
+  { key: 'Fashion', title: 'Fashion', subtitle: 'Style Picks', emoji: '👗', color: '#4a148c' },
+  { key: 'Home & Furniture', title: 'Home & Furniture', subtitle: 'For Your Home', emoji: '🛋️', color: '#1b5e20' },
+  { key: 'Appliances', title: 'Appliances', subtitle: 'Kitchen & More', emoji: '📺', color: '#e65100' },
+  { key: 'Sports', title: 'Sports & Fitness', subtitle: 'Stay Active', emoji: '🏋️', color: '#006064' },
+  { key: 'Books', title: 'Books', subtitle: 'Read & Learn', emoji: '📚', color: '#37474f' },
+  { key: 'Beauty', title: 'Beauty & Personal Care', subtitle: 'Look Great', emoji: '💄', color: '#880e4f' },
+  { key: 'Grocery', title: 'Grocery', subtitle: 'Daily Essentials', emoji: '🛒', color: '#2e7d32' },
 ];
 
 const NAV_CATS = [
-  { name: 'All Products',    icon: '🏠',  path: '/shop' },
-  { name: 'Mobiles',         icon: '📱',  path: '/shop/category/Mobiles' },
-  { name: 'Electronics',     icon: '💻',  path: '/shop/category/Electronics' },
-  { name: 'Fashion',         icon: '👕',  path: '/shop/category/Fashion' },
-  { name: 'Home & Furniture',icon: '🛋️', path: '/shop/category/Home & Furniture' },
-  { name: 'Appliances',      icon: '📺',  path: '/shop/category/Appliances' },
-  { name: 'Sports',          icon: '🏋️', path: '/shop/category/Sports' },
-  { name: 'Beauty',          icon: '💄',  path: '/shop/category/Beauty' },
-  { name: 'Grocery',         icon: '🛒',  path: '/shop/category/Grocery' },
-  { name: 'Travel',          icon: '✈️',  path: '/shop/category/Travel' },
-  { name: 'Books',           icon: '📚',  path: '/shop/category/Books' },
+  { name: 'All Products', icon: '🏠', path: '/shop' },
+  { name: 'Mobiles', icon: '📱', path: '/shop/category/Mobiles' },
+  { name: 'Electronics', icon: '💻', path: '/shop/category/Electronics' },
+  { name: 'Fashion', icon: '👕', path: '/shop/category/Fashion' },
+  { name: 'Home & Furniture', icon: '🛋️', path: '/shop/category/Home & Furniture' },
+  { name: 'Appliances', icon: '📺', path: '/shop/category/Appliances' },
+  { name: 'Sports', icon: '🏋️', path: '/shop/category/Sports' },
+  { name: 'Beauty', icon: '💄', path: '/shop/category/Beauty' },
+  { name: 'Grocery', icon: '🛒', path: '/shop/category/Grocery' },
+  { name: 'Travel', icon: '✈️', path: '/shop/category/Travel' },
+  { name: 'Books', icon: '📚', path: '/shop/category/Books' },
 ];
 
 const banners = [
@@ -65,8 +65,8 @@ const SkeletonRow = () => (
 
 /* ══════════════════ Home ══════════════════ */
 const Home = () => {
-  const [allProducts, setAllProducts]   = useState([]);
-  const [loading,     setLoading]       = useState(true);
+  const [allProducts, setAllProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [activeBanner, setActiveBanner] = useState(0);
 
   /* fetch ALL products (up to 200 for section variety) */
@@ -91,10 +91,10 @@ const Home = () => {
     return () => clearInterval(t);
   }, []);
 
-  /* derive sections */
-  const topDeals        = shuffle(allProducts).slice(0, 12);
-  const newArrivals     = [...allProducts].reverse().slice(0, 12);
-  const byCat = (cat)  => allProducts.filter(p => p.category === cat);
+  /* derive sections — memoised so banner ticks don't re-shuffle */
+  const topDeals = useMemo(() => shuffle(allProducts).slice(0, 12), [allProducts]);
+  const newArrivals = useMemo(() => [...allProducts].reverse().slice(0, 12), [allProducts]);
+  const byCat = useMemo(() => (cat) => allProducts.filter(p => p.category === cat), [allProducts]);
 
   return (
     <div className="hp-wrap">
@@ -116,7 +116,18 @@ const Home = () => {
         {/* ── Hero slider ── */}
         <div className="hp-hero">
           <div className="hp-herotrack" style={{ transform: `translateX(-${activeBanner * 100}%)` }}>
-            {banners.map((b, i) => <img key={i} src={b} alt="" loading="lazy" />)}
+            {banners.map((b, i) => (
+              <img
+                key={i}
+                src={b}
+                alt=""
+                loading={i === 0 ? 'eager' : 'lazy'}
+                onError={(e) => {
+                  e.currentTarget.style.background = 'linear-gradient(135deg,#2874f0 0%,#1a237e 100%)';
+                  e.currentTarget.removeAttribute('src');
+                }}
+              />
+            ))}
           </div>
           <div className="hp-dots">
             {banners.map((_, i) => (
@@ -191,9 +202,9 @@ const Home = () => {
         .hp-catname { font-size:.7rem; font-weight:600; color:#212121; text-align:center; line-height:1.2; }
 
         /* ── Hero ─────────────────────────────────────── */
-        .hp-hero { height:270px; overflow:hidden; position:relative; margin-bottom:.75rem; box-shadow:0 1px 2px rgba(0,0,0,.1); }
-        .hp-herotrack { display:flex; height:100%; transition:transform .6s ease; }
-        .hp-herotrack img { min-width:100%; height:100%; object-fit:cover; }
+        .hp-hero { height:270px; overflow:hidden; position:relative; margin-bottom:.75rem; box-shadow:0 1px 2px rgba(0,0,0,.1); background:linear-gradient(135deg,#2874f0 0%,#1a237e 100%); }
+        .hp-herotrack { display:flex; height:100%; transition:transform .6s ease; will-change:transform; }
+        .hp-herotrack img { min-width:100%; height:100%; object-fit:cover; flex-shrink:0; display:block; background:linear-gradient(135deg,#2874f0 0%,#1a237e 100%); }
         .hp-dots { position:absolute; bottom:12px; left:50%; transform:translateX(-50%); display:flex; gap:6px; }
         .hp-dot { width:9px; height:9px; border-radius:50%; background:rgba(255,255,255,.55); cursor:pointer; transition:all .3s; }
         .hp-dot.a { background:#fff; width:22px; border-radius:4px; }

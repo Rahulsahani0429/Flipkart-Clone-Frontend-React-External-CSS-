@@ -5,6 +5,7 @@
 import { createContext, useState, useContext } from "react";
 import axios from "axios";
 import { API_BASE_URL } from "../config";
+import toast from "react-hot-toast";
 
 const AuthContext = createContext();
 
@@ -46,6 +47,7 @@ export const AuthProvider = ({ children }) => {
     setUser(null);
     localStorage.removeItem("userInfo");
     localStorage.removeItem("cartItems"); // Force clear cart on logout
+    toast.success("Logged out successfully");
   };
 
   const updateUserInfo = (userData) => {

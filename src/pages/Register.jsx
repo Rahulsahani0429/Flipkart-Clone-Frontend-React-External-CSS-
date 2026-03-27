@@ -1,22 +1,34 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import toast from "react-hot-toast";
 
 const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isAdmin, setIsAdmin] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const { register } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
+    const toastId = toast.loading("Loading...");
     try {
       await register(name, email, password, isAdmin);
+      toast.success("Registration successful!", { id: toastId });
+      setName("");
+      setEmail("");
+      setPassword("");
+      setIsAdmin(false);
       navigate("/login");
     } catch (error) {
-      alert(error.response?.data?.message || "Registration failed");
+      const errorMsg = error.response?.data?.message || "Registration failed";
+      toast.error(errorMsg, { id: toastId });
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -81,8 +93,8 @@ const Register = () => {
               By continuing, you agree to Flipkart's Terms of Use and Privacy
               Policy.
             </p>
-            <button type="submit" className="login-btn-flip">
-              Continue
+            <button type="submit" className="login-btn-flip" disabled={isLoading}>
+              {isLoading ? "Loading..." : "Continue"}
             </button>
           </form>
           <div className="auth-footer-flip">
@@ -108,6 +120,7 @@ const Register = () => {
 
         .terms-text { font-size: 0.75rem; color: #878787; margin-bottom: 1.5rem; line-height: 1.4; }
         .login-btn-flip { background: #fb641b; color: white; border: none; padding: 0.8rem; font-size: 1rem; font-weight: 700; border-radius: 2px; cursor: pointer; box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2); margin-bottom: 1rem; }
+        .login-btn-flip:disabled { opacity: 0.7; cursor: not-allowed; }
         
         .auth-footer-flip { margin-top: auto; text-align: center; padding-bottom: 1rem; }
         .auth-footer-flip a { color: var(--primary); text-decoration: none; font-weight: 700; font-size: 0.9rem; }
